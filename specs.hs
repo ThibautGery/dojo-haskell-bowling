@@ -23,3 +23,6 @@ main = hspec $ do
 
         it "should count a spare only within a frame" $ do
             score ([0,0,3,3,7,1] `thenAll` [0]) `shouldBe` 14
+
+        it "should add two bonus throws for a strike" $ do
+            score ([10,4,5] ++ (replicate 16 0)) `shouldBe` 28
