@@ -4,7 +4,10 @@ import Test.Hspec
 import Bowling
 
 only :: [ Integer] -> [ Integer ]
-only num = take 20 (cycle num )
+only num = take 20 (cycle num)
+
+thenAll :: [ Integer] -> [ Integer ] -> [ Integer ]
+thenAll first lastPart = take 20 (first ++ cycle lastPart)
 
 main :: IO()
 main = hspec $ do
@@ -16,4 +19,7 @@ main = hspec $ do
             score (only [2,3])  `shouldBe` 50
 
         it "should add a bonus throw for a spare" $ do
-            score ([3,7,5] ++ only([0])) `shouldBe` 20 
+            score ([3,7,5]  `thenAll` [0] ) `shouldBe` 20
+
+        it "should count a spare only within a frame" $ do
+            score ([0,0,3,3,7,1] `thenAll` [0]) `shouldBe` 14
