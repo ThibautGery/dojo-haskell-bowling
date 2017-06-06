@@ -1,5 +1,5 @@
 module Bowling
 where
 
--- score: [Integer] -> Integer
-score list = 0
+score :: [Integer] -> Integer
+score = sum
