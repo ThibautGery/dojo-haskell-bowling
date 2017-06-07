@@ -31,4 +31,10 @@ main = hspec $ do
             score ([10,0,10,4,5] ++ (replicate 14 0)) `shouldBe` 43
 
         it "should correctly count a last spare" $ do
-            score ((replicate 18 0) ++ [4,6,5]) `shouldBe` 15
+            score ((replicate 18 0) ++ [4, 6, 5]) `shouldBe` 15
+
+        it "should correctly count a last strike" $ do
+            score ((replicate 18 0) ++ [10, 3, 4]) `shouldBe` 17
+
+        it "should correctly count a perfect" $ do
+            score (replicate 12 10) `shouldBe` 300
