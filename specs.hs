@@ -28,4 +28,7 @@ main = hspec $ do
             score ([10,4,5] ++ (replicate 16 0)) `shouldBe` 28
 
         it "should not confuse a strike with a spare" $ do
-            score ([10,0,10,4,5] ++ (replicate 14 0)) `shouldBe` 43 
+            score ([10,0,10,4,5] ++ (replicate 14 0)) `shouldBe` 43
+
+        it "should correctly count a last spare" $ do
+            score ((replicate 18 0) ++ [4,6,5]) `shouldBe` 15
