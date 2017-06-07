@@ -26,3 +26,6 @@ main = hspec $ do
 
         it "should add two bonus throws for a strike" $ do
             score ([10,4,5] ++ (replicate 16 0)) `shouldBe` 28
+
+        it "should not confuse a strike with a spare" $ do
+            score ([10,0,10,4,5] ++ (replicate 14 0)) `shouldBe` 43 
